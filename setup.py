@@ -11,6 +11,6 @@ if __name__ == "__main__":
     # app.logger.info("Running the app")
 
     manager = Manager(app)
-    manager.add_command("runserver", Server(host='0.0.0.0',port=5000,ssl_crt='certificate.crt', ssl_key='private.key'))
+    manager.add_command("runserver", Server(host='0.0.0.0',port=443,ssl_crt='certificate.crt', ssl_key='private.key'))
     #manager.add_command("runserver", Server(host=os.getenv('FLASK_RUN_HOST'), port=os.getenv('FLASK_RUN_PORT')))
     manager.run()

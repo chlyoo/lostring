@@ -1,10 +1,9 @@
-#Banksalad 사전과제 
-US stock symbol max profit over the last 180 days
+#LostRing 
+Location Based AI Supported Lost and Found system 
 ###Summary
-- Used <u>Python3</u>, <u>Flask</u> framework and <u>Jinja2 template</u>
-- yfinance library used for stock price data
-- Can search buy and sell date for US stock symbol in the main website(http://localhost:5000).
-- Offers same data of json type(http://localhost:5000/api/symbol) with POST method.
+- Used <u>Python3</u>, <u>Flask</u> framework, <u>MongoDB</u> and <u>Jinja2 template</u>
+- Public API, Kakao Map API
+- Can search lost and found items.
 ##Execution
 - Install python3 dependencies
 ```console
