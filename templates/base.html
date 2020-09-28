@@ -25,8 +25,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <a class="navbar-brand" href="/">About</a>
-                <a class="navbar-brand" href="/">Guide</a> 
-                <a class="navbar-brand" href="/">Login</a>
+                <a class="navbar-brand" href="{{ url_for('auth.login') }}">Login</a>
 
             </ul>
 
@@ -43,7 +42,7 @@
         {{ message }}
     </div>
     {% endfor %}
-    {% block page_content %}{% endblock %}
+        {% block page_content %}{% endblock %}
  </div>
  {% endblock %}
 
