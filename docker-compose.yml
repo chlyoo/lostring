@@ -12,7 +12,7 @@ services:
     restart: on-failure
   
   httpserver:
-    image: devenv
+    image: peterscience/devenv
     ports:
       - "80:80"
     container_name: "lost"
