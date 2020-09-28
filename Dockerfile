@@ -27,6 +27,5 @@ ENV LC_ALL ko_KR.UTF-8
 
 WORKDIR /data/
 
-RUN pip3 install -r /data/requirements.txt
 RUN /data/init.script
-
+RUN pip3 install -r /data/requirements.txt

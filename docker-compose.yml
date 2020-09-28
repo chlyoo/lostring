@@ -30,6 +30,5 @@ services:
     container_name: "ring"
     ports:
       - "443:443"
-    command: 
-      python3 setup.py runserver
+    command: sh -c "(cd /data/ && git pull)&& python3 /data/setup.py runserver"
     restart: on-failure

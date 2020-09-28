@@ -1,3 +1,2 @@
-cd /data && /bin/bash
 (cd /data/ && git pull)
 python3 /data/setup.py runserver
