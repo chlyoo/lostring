@@ -1,6 +1,8 @@
 from datetime import datetime, timedelta
 from config import *
-from instance.config import  *
+import sys, os
+
+
 
 class LostFound:
     def __init__(self, api):

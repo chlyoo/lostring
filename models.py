@@ -4,6 +4,7 @@ from app import login_manager
 from app import db
 from flask import current_app
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+from datetime import datetime
 
 class User(UserMixin, object):
 	id = ""

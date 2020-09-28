@@ -4,8 +4,9 @@
 
 {% block title %}LostRing{% endblock %}
 {% block page_content %}
-<body onload="alert('서비스 준비중입니다.')">
-<div id="map" style="width:100%;height:350px;"></div>
+<body><!--onload="alert('서비스 준비중입니다.')"-->
+
+             <div id='map' style='width:100%;height:450px;border-radius: 5px;'>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{KAKAO}}"></script>
 <script>
@@ -68,4 +69,31 @@ function displayMarker(locPosition, message) {
     map.setCenter(locPosition);
 }
 </script>
+             </div>
+
+    <div class="btn-default" style="" align="center" onclick="alert('분실물 찾기')" href="/"> Lost  </div>
+    <div class="btn-default" align="center" onclick="alert('분실물 등록')" href="{{ url_for('auth.login') }}" > Found </div>
+<!-- TODO: 로그인 이후에 등록하는 프로세스랑 연계">  -->
+    <div class="modal-content">
+        <p align="center">최근 등록된 분실물</p>
+        <ul>
+            <li>
+                분실물1: 지역 / 보관장소
+            </li>
+            <li>
+                분실물2: 지역 / 보관장소
+            </li>
+            <li>
+                분실물3: 지역 / 보관장소
+            </li>
+            <li>
+                분실물4: 지역 / 보관장소
+            </li>
+            <li>
+                분실물5: 지역 / 보관장소
+            </li>
+        </ul>
+
+    </div>
+</body>
 {% endblock %}

@@ -1,0 +1,35 @@
+version: '3'
+
+services: 
+  db:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    volumes: 
+      - ./Mongodb/data:/data/db
+    container_name: "db"
+    restart: on-failure
+  
+  httpserver:
+    image: devenv
+    ports:
+      - "80:80"
+    container_name: "lost"
+    volumes:
+      - ./:/data
+    command:
+      python3 resslserver.py
+    restart: always
+
+  sslserver: 
+    image: peterscience/devenv
+
+    volumes:
+      - ./:/data
+    container_name: "ring"
+    ports:
+      - "443:443"
+    command: 
+      python3 setup.py runserver
+    restart: on-failure

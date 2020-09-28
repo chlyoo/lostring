@@ -4,6 +4,7 @@ from flask_mail import Mail
 from model import LostFound
 from service import SearchService
 from config import config
+from flask_moment import Moment
 import pymongo
 
 
@@ -14,6 +15,7 @@ login_manager.login_view = 'auth.login'
 
 bootstrap = Bootstrap()
 mail = Mail()
+moment = Moment()
 
 conn = pymongo.MongoClient('mongodb://db:27017')
 db = conn.get_database('LostnFound')
@@ -28,6 +30,7 @@ def create_app(config_name):
 	bootstrap.init_app(app)
 	login_manager.init_app(app)
 	mail.init_app(app)
+	moment.init_app(app)
 
 	from main import main as index_blueprint
 	app.register_blueprint(index_blueprint)

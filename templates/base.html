@@ -1,9 +1,15 @@
 {% extends "bootstrap/base.html" %}
 
 {% block title %}LostRing{% endblock %}
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="{{url_for('static', filename='style.css')}}">
+{% endblock %}
 {% block head %}
 {{ super() }}
 {% endblock %}
+
 {% block navbar %}
 <div class="navbar navbar-inverse" role="navigation">
     <div class="container">
@@ -18,15 +24,17 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <a class="navbar-brand" href="/">LOST</a>
-                <a class="navbar-brand" href="/">FOUND</a>
-
+                <li><a href="/">About</a></li>
+                <li><a href="/">Lost</a></li><!--#,id=current_user.id-->
+                <li><a href="/">Found</a></li>
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <a class="navbar-brand" href="/">About</a>
-                <a class="navbar-brand" href="{{ url_for('auth.login') }}">Login</a>
-
+                {% if current_user.is_authenticated %}
+                 <li><a href="{{ url_for('auth.logout') }}">Sign Out</a></li>
+                {% else %}
+                 <li><a href="{{ url_for('auth.login') }}">Sign In</a></li>
+                {% endif %}
             </ul>
 
         </div>
@@ -42,10 +50,12 @@
         {{ message }}
     </div>
     {% endfor %}
-        {% block page_content %}{% endblock %}
+    {% block page_content %}{% endblock %}
  </div>
  {% endblock %}
 
+
 {% block scripts %}
 {{ super() }}
+{{ moment.include_moment() }} {# 20191122 #}
 {% endblock %}

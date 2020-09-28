@@ -1,0 +1,3 @@
+#!/bin/bash
+(cd /data/ && git pull)
+python3 /data/resslserver.py
