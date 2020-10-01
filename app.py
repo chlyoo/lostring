@@ -17,7 +17,7 @@ bootstrap = Bootstrap()
 mail = Mail()
 moment = Moment()
 
-conn = pymongo.MongoClient('mongodb://db:27017')
+conn = pymongo.MongoClient('mongodb://localhost:27017')
 db = conn.get_database('LostnFound')
 lostdata = LostFound(db)
 service = SearchService(lostdata)
