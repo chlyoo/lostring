@@ -4,15 +4,20 @@ services:
   db:
     image: mongo
     restart: always
+    networks:
+      - db-net
+      - default
     ports:
       - 27017:27017
     volumes: 
       - ./Mongodb/data:/data/db
     container_name: "db"
-    restart: on-failure
+    restart: always
   
   httpserver:
     image: peterscience/devenv
+    networks:
+      - db-net
     ports:
       - "80:80"
     container_name: "lost"
@@ -24,11 +29,16 @@ services:
 
   sslserver: 
     image: peterscience/devenv
-
+    networks:
+      - db-net
     volumes:
       - ./:/data
     container_name: "ring"
     ports:
       - "443:443"
     command: sh -c "(cd /data/ && git pull)&& python3 /data/setup.py runserver"
-    restart: on-failure
+    restart: always
+
+networks:
+  db-net:
+    driver: bridge
