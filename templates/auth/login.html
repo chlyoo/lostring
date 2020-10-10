@@ -1,16 +1,22 @@
-{% extends "bootstrap/templ.html" %}
-{% import "bootstrap/wtf.html" as wtf %}
-
+{% extends 'bootstrap/templ.html' %}
 {% block title %}LostRing - Login{% endblock %}
 
 {% block page_content %}
-<div class="page-header">
+<div class="page-header" align="left">
     <h1>Login</h1>
 </div>
+    <div class="float-md-right" >
+        <strong style="font-size: x-large">LostRing</strong> 사용자가 간편하게 분실물을 등록하고,<br>
+            찾을 수 있도록 도와주는 사이트 입니다.
+        </p>
+    </div>
 <div class="col-md-4">
     {{ wtf.quick_form(form) }}
      <br>
 
     <p>New user? <a href="{{ url_for('auth.register') }}">Click here to register</a>.</p>
+
 </div>
+
+
 {% endblock %}
