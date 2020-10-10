@@ -9,5 +9,5 @@ from instance.config import *
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html', KAKAO=KAKAO_APP_KEY)
+    return render_template('bootstrap/index.html', KAKAO=KAKAO_APP_KEY)
 

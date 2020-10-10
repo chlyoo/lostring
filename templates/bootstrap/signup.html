@@ -1,0 +1,55 @@
+~<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - LostRing</title>
+    <meta property="og:type" content="website">
+    <meta name="description" content="지도기반 분실물 정보 플랫폼">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css?h=a827226eafd41ee1634a34a1afaac9ac">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i">
+    <link rel="stylesheet" href="/assets/css/styles.min.css?h=6fa49f67c828c8b283df76d9fbf17481">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark navbar-custom">
+        <div class="container"><a class="navbar-brand" href="#">LostRing</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item"></li>
+                    <li class="nav-item"><a class="nav-link" href="#">lost</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">found</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{url_for(auth.login)}}">log In</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <footer class="bg-dark py-5 bg-black" style="height: 90px;margin: 0px;padding: 30px;padding-top: 34px;padding-bottom: 34px;">
+        <div class="container" style="padding: 0px;">
+            <p class="text-center text-white m-0 small">Copyright&nbsp;© LostRing 2020</p>
+        </div>
+    </footer>
+    <!-- Start: Registration Form with Photo -->
+    <div class="register-photo">
+        <!-- Start: Form Container -->
+        <div class="form-container">
+            <form method="post">
+                <h2 class="text-center"><strong>Create</strong> an account.</h2>
+                <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
+                <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
+                <div class="form-group"><input class="form-control" type="password" name="password-repeat" placeholder="Password (repeat)"></div>
+                <div class="form-group">
+                    <div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox">I agree to the license terms.</label></div>
+                </div>
+                <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Sign Up</button></div><a class="already" href="#">You already have an account? Login here.</a></form>
+        </div>
+        <!-- End: Form Container -->
+    </div>
+    <!-- End: Registration Form with Photo -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -6,7 +6,7 @@
 {% block page_content %}
 <body><!--onload="alert('서비스 준비중입니다.')"-->
 
-             <div id='map' style='float: right; width:80%;height:450px;border-radius: 5px;'>
+             <div id='map' style='float: none;width:80%;height:450px;border-radius: 5px;'>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{KAKAO}}"></script>
 <script>
@@ -70,7 +70,7 @@ function displayMarker(locPosition, message) {
 }
 </script>
              </div>
-
+<div class="left-menu" style="float: left">
     <div class="btn-default" style="" align="center" onclick="alert('분실물 찾기')" href="/"> Lost  </div>
     <div class="btn-default" align="center" onclick="alert('분실물 등록')" href="{{ url_for('auth.login') }}" > Found </div>
 <!-- TODO: 로그인 이후에 등록하는 프로세스랑 연계">  -->
@@ -80,7 +80,7 @@ function displayMarker(locPosition, message) {
             <li>
                 분실물1: 지역 / 보관장소
             </li>
-            <li>
+            <li>`
                 분실물2: 지역 / 보관장소
             </li>
             <li>
@@ -94,6 +94,7 @@ function displayMarker(locPosition, message) {
             </li>
         </ul>
 
+    </div>
     </div>
 </body>
 {% endblock %}
