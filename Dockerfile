@@ -16,8 +16,8 @@ RUN chmod +x /data/run.script
 RUN chmod +x /data/init.script
 
 #git setting
-RUN git config --global user.name "youpeterabb1t"
-RUN git config --global user.email "21300259@handong.edu"
+RUN git config --global user.name "chlyoo"
+RUN git config --global user.email "changhyunlyoo@gmail.com"
 
 
 #Set the locale
