@@ -1,11 +1,12 @@
 {% extends 'bootstrap/templ.html' %}
 {% block header %}
-    {{super()}}
-    <header class="masthead text-center text-white" style="padding: 0;padding-bottom: 132px;padding-top: 75px;background: #07689f;">
+    <div class="masthead text-center text-white" style="padding: 0;padding-bottom: 132px;padding-top: 75px;background: #07689f;">
         <h3>LostnFoundMap</h3>
         <div class="masthead-content">
             <div class="container"><iframe allowfullscreen="" frameborder="0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBvK7bvduzsq19lnF2Bq-UwdenaIjVuICo&amp;q=hgu+student+hall&amp;zoom=17" width="80%" height="400"></iframe></div>
         </div>
         <div class="btn-group" role="group"><button class="btn btn-success" type="button">Lost</button><button class="btn btn-info" type="button">Found</button></div>
-    </header>
+    </div>
+
+
 {% endblock %}
