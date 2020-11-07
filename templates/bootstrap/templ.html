@@ -25,12 +25,13 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Lost</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Found</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('lostfound.show_lost') }}">Lost</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('lostfound.show_found') }}">Found</a></li>
                     {% if current_user.is_authenticated %}
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.logout') }}">Sign Out</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('lostfound.my_page') }}">Mypage</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.logout') }}">Sign Out</a></li>
                     {% else %}
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.login') }}">Sign In</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.login') }}">Sign In</a></li>
                     {% endif %}
                 </ul>
             </div>

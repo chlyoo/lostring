@@ -1,0 +1,14 @@
+{% extends 'bootstrap/templ.html' %}
+{% block title %}LostRing - Lost{% endblock %}
+//TODO: design
+{% block page_content %}
+    <div>
+        <a href="{{ url_for('lostfound.register_lost') }}" class="btn btn-info">register</a>
+    </div>
+    <div class=float-md-none>
+
+{% for item in lostitem %}
+<div>{{ item }} </div>
+{% endfor %}
+    </div>
+{% endblock %}

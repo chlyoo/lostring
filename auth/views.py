@@ -16,7 +16,7 @@ def login():
         collection = db.get_collection('users')
         results = collection.find_one({'id': form.email.data})
         if results is not None:
-            user = User(form.email.data, "", "", "")  # 20191112
+            user = User(form.email.data, "", "")  # 20191112
             # print(form.email.data)
             user.from_dict(results)
             if user is not None and user.verify_password(form.password.data):
@@ -38,8 +38,7 @@ def logout():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(email=form.email.data, username=form.username.data, password=form.password.data,
-                    stuid=form.stuid.data)
+        user = User(email=form.email.data, username=form.name.data, password=form.password.data)
         collection = db.get_collection('users')
         collection.insert_one(user.to_dict())
         token = user.generate_confirmation_token()

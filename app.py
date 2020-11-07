@@ -41,5 +41,8 @@ def create_app(config_name):
 	from auth import auth as auth_blueprint
 	app.register_blueprint(auth_blueprint, url_prefix="/auth")
 
+	from lostfound import lostfound as lostfound_blueprint
+	app.register_blueprint(lostfound_blueprint)
+
 	return app
 	#app.run(host='localhost', port=80)

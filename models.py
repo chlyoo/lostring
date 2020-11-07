@@ -17,11 +17,11 @@ class User(UserMixin, object):
 	membergrade = 0
 	point = 0
 
-	def __init__(self, email, username, password, stuid):
+	def __init__(self, email, username, password):
 		self.id = email
 		self.username = username
 		self.password = password
-		self.stuid = stuid
+
 
 		###
 		# 20191112
@@ -49,7 +49,7 @@ class User(UserMixin, object):
 		collection = db.get_collection('users')
 		results = collection.find_one({'id': user_id})
 		if results is not None:
-			user = User(results['id'], "", "", "")  # 20191112
+			user = User(results['id'], "", "")  # 20191112
 			user.from_dict(results)
 			return user
 		else:
@@ -97,7 +97,6 @@ class User(UserMixin, object):
 		dict_user = {
 			'id': self.id,
 			'username': self.username,
-			'stuid': self.stuid,
 			### 20191112
 			'role_id': self.role.name,
 			'role_permission': self.role.permission,
@@ -114,7 +113,6 @@ class User(UserMixin, object):
 		if data is not None:
 			self.id = data['id']
 			self.username = data['username']
-			self.stuid = data['stuid']
 			### 20191112
 			self.role = Role(data['role_id'], data['role_permission'])
 			###
