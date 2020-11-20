@@ -26,8 +26,13 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('lostfound.show_lost') }}">분실</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('lostfound.show_found') }}">습득</a></li>
+                    {% if current_user.is_anonymous%}
+                        <li class="nav-item"><a class="nav-link" onclick="alert('로그인이 필요한 기능입니다.')" href="{{ url_for('lostfound.register_lost') }}">분실신고</a></li>
+                        <li class="nav-item"><a class="nav-link" onclick="alert('로그인이 필요한 기능입니다.')" href="{{ url_for('lostfound.register_found') }}">습득신고</a></li>
+                     {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('lostfound.register_lost') }}">분실신고</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('lostfound.register_found') }}">습득신고</a></li>
+                    {% endif %}
                     {% if current_user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link" href="{{ url_for('lostfound.my_page') }}">마이페이지</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.logout') }}">로그아웃</a></li>

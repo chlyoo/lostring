@@ -1,10 +1,12 @@
 {% extends 'bootstrap/templ.html' %}
 {% block title %}LostRing - Register Item{% endblock %}
 //TODO: form
+
 {% block page_content %}
     <link rel="stylesheet"
           href="{{url_for('static', filename='style.css')}}">
     <div class="container-lg" style="width: 50%; text-align: left">
     {{ wtf.quick_form(form) }}
+
     </div>
 {% endblock %}
