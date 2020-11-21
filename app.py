@@ -5,7 +5,6 @@ from model import LostFound
 from service import SearchService
 from config import config
 from flask_moment import Moment
-from flask_datepicker import datepicker
 import pymongo
 
 
@@ -32,7 +31,6 @@ def create_app(config_name):
 	login_manager.init_app(app)
 	mail.init_app(app)
 	moment.init_app(app)
-	datepicker(app)
 
 	from main import main as index_blueprint
 	app.register_blueprint(index_blueprint)
