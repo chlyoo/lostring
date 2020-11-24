@@ -24,6 +24,7 @@ def register_found():
     return render_template('bootstrap/register.html', form = form)
 
 @lostfound.route('/my_page', methods=['GET','POST'])
+@login_required
 def my_page():
     pass
     return render_template('bootstrap/mypage.html')
