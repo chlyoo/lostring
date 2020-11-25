@@ -8,4 +8,4 @@ Location Based AI Supported Lost and Found system
 - Install python3 dependencies
 ```console
 pip3 install -r requirements.txt
-```ㄴ
+```
