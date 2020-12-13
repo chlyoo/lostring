@@ -1,16 +1,26 @@
 {% extends 'bootstrap/templ.html' %}
 {% block header %}
-    <div class="masthead text-center text-white" style="padding: 0;padding-bottom: 132px;padding-top: 75px;background: #07689f;">
+    <div class="masthead text-left text-white" style="padding: 15%;padding-bottom: 5px;padding-top: 70px;background: #07689f;">
         <h3>LostnFoundMap</h3>
-        <div class="masthead-content">
-            <div class="container">
-                {{map}}
-            </div>
-        </div>
-        <div class="btn-group" role="group">
-            <button class="btn btn-success" onclick="javascript:alert('showing lost');" type="button">Lost</button>
-            <button class="btn btn-info" onclick="javascript:alert('showing found');" type="button">Found</button>
-        </div>
     </div>
-    <script>javascript:alert('사이트 개발중')</script> <! TODO  개발완료시 제거-->
+{% endblock %}
+{% block body %}
+      <div class="masthead-content"  style="background: #07689f">
+               <div class="container" style="display:grid; grid-template-columns: 2fr 1fr;">
+                {{map}}
+                <div style="justify-content: center; align-content: center; display: inline;height: 10%; padding-left: 10%">
+                <div class="btn-group" role="group" style="padding-left:30%">
+                     <button class="btn btn-success" onclick="javascript:alert('showing lost');" type="button">Lost</button>
+                     <button class="btn btn-info" onclick="javascript:alert('showing found');" type="button">Found</button>
+                </div>
+                    <div style="display: block; height: 100%;  background: #abdde5 ">
+                        분실물 표시하는 영역
+                    </div>
+      </div>
+            </div>
+
+      </div>
+
+
+    {#    <script>javascript:alert('사이트 개발중')</script> <! TODO  개발완료시 제거-->#}
 {% endblock %}

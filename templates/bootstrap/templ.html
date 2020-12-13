@@ -1,6 +1,6 @@
 {% import "bootstrap/wtf.html" as wtf %}
 <!DOCTYPE html>
-<html>
+<html lang="EUC-KR">
 
 <head>
 {% block meta %}
@@ -46,7 +46,7 @@
 {% endblock %}
 {% block header %}
 
-        <header class="masthead text-center text-white" style="padding: 0;padding-bottom: 132px;padding-top: 75px;background: #07689f;">
+        <header class="masthead text-center text-white" style="padding: 75px 0 132px;background: #07689f;">
         <div class="masthead-content">
             <div class="container">
            {% block page_content %} {% endblock %}
@@ -54,12 +54,13 @@
         </div>
     </header>
 {% endblock %}
-
+{% block body %}
+{% endblock %}
 
 
 {% block footer %}
-    <footer class="bg-dark py-5 bg-black" style="height: 90px;margin: 0px;padding: 30px;padding-top: 34px;padding-bottom: 34px;">
-        <div class="container" style="padding: 0px;">
+    <footer class="bg-dark py-5 bg-black" style="display: block">
+        <div class="container">
             <p class="text-center text-white m-0 small">Copyright&nbsp;© LostRing 2020</p>
         </div>
     </footer>
