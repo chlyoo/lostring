@@ -1,11 +1,7 @@
 {% extends 'bootstrap/templ.html' %}
-{% block header %}
-    <div class="masthead text-left text-white" style="padding: 15%;padding-bottom: 5px;padding-top: 70px;background: #07689f;">
+{% block page_content %}
         <h3>LostnFoundMap</h3>
-    </div>
-{% endblock %}
-{% block body %}
-      <div class="masthead-content"  style="background: #07689f">
+          <div class="masthead-content"  style="background: #07689f">
                <div class="container" style="display:grid; grid-template-columns: 2fr 1fr;">
                 {{map}}
                 <div style="justify-content: center; align-content: center; display: inline;height: 10%; padding-left: 10%">
@@ -20,7 +16,5 @@
             </div>
 
       </div>
-
-
-    {#    <script>javascript:alert('사이트 개발중')</script> <! TODO  개발완료시 제거-->#}
 {% endblock %}
+

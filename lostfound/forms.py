@@ -1,21 +1,21 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, SelectField, RadioField, Label, HiddenField
+from wtforms import StringField, SubmitField, SelectField, RadioField, HiddenField, ValidationError
 from wtforms.fields.html5 import DateTimeLocalField
 from wtforms.validators import DataRequired
 import json
 
 
 class LostForm(FlaskForm):
-    itemname = StringField('분실물 이름')
+    itemname = StringField('분실물 이름', [DataRequired()])
     with open('lostfound/category.json', 'r') as f:
         cate = list(json.load(f).items())
     category = SelectField('분류', choices=cate)
-    latitude = HiddenField('위도')
+    latitude = HiddenField('위도', [DataRequired("지도에서 분실 위치를 지정해주세요")])
     longitude = HiddenField('경도')
     place = StringField('습득장소')
-    lost_date = DateTimeLocalField('분실일시')
+    lost_date = DateTimeLocalField('분실일시', [DataRequired()])
     detail = StringField('물건의 특징')
-    submit = SubmitField('신고')
+    submit = SubmitField('등록')
     # 사진 필드 #TODO:사진필드 추가
 
 
@@ -25,15 +25,18 @@ class FoundForm(FlaskForm):
         cate = list(json.load(f).items())
     category = SelectField('분류', choices=cate)
     place = StringField('습득장소')
-    latitude = HiddenField('위도')
+    latitude = HiddenField('위도', [DataRequired("지도에서 습득 위치를 지정해주세요")])
     longitude = HiddenField('경도')
-    found_date = DateTimeLocalField('발견일시')
+    found_date = DateTimeLocalField('발견일시', [DataRequired()] )
     detail = StringField('물건의 특징')
-    # ownership = Label(field_id='ownership', text='<span>소유권 주장하시겠습니까?</span>')
-    claim_ownership = StringField(label='ownership', render_kw={'placeholder': '소유권을 주장합니다'})
-    test_ownership = RadioField(label='ownership', render_kw={'placeholder': '소유권 주장합니다', 'description': '소유권 주장합니다',
-                                                              'value': '소유권 주장합니다'},
-                                choices=[(True, '네'), (False, '아니오')], default=False)
-    # claim_ownership = StringField(label='ownership',coerce=str, )
-    submit = SubmitField('신고')
-    # TODO: 사진필드 추
+    label = StringField(label = '소유권을 주장하시겠습니까?', render_kw={'type':'hidden'})
+    check_ownership = RadioField(label='ownership', choices=[(True, '네'), (False, '아니오')], default=False)
+    sign_owner = StringField(label="", render_kw={'placeholder':'소유권을 주장합니다', 'type':'hidden'})
+    submit = SubmitField('등록')
+
+    def validate_sign_owner(self, field):
+        if '소유권을 주장합니다' not in field.data:
+            raise ValidationError('정확히 입력하세요')
+
+
+# TODO: 사진필드 추가

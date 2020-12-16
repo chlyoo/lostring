@@ -1,3 +1,4 @@
+
 {% extends 'bootstrap/templ.html' %}
 {% block title %}LostRing - Register Item{% endblock %}
 //TODO: form
@@ -8,9 +9,25 @@
     <div style="display:grid; grid-template-columns: 1fr 1fr;">
         <div class="container-lg" style="display:grid; width: 50%; text-align: left">
         {{ wtf.quick_form(form) }}
+            {%   if url_for(request.endpoint) =='/found' %}
+                <script>
+        function check_option() {
+    if(document.getElementById('check_ownership-0').checked){
+        document.getElementById('sign_owner').type='text'
+    } else {
+        document.getElementById('sign_owner').type='hidden'
+    }
+}
+
+    var radios = document.querySelectorAll('input[type=radio][name="check_ownership"]');
+    radios.forEach(radio => radio.addEventListener('change', () => check_option()));
+
+    </script>
+        {% endif %}
         </div>
         <div class = "container-lg" style="display:block; margin:0 auto;" >
             <span>지도에서 {% if url_for(request.endpoint) == '/found'  %} 습득 {% else %}분실{% endif %} 위치를 선택해주세요</span>
+
             {{ map }}
 
         </div>

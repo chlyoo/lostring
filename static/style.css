@@ -5,3 +5,9 @@
 #div div div.col-md-4 p  a{
     color: #17a2b8;
 }
+
+.form-group {
+    display: grid;
+  margin-bottom: 5px;
+
+}

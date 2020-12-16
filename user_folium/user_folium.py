@@ -22,6 +22,7 @@ class ClickForOneMarker(folium.ClickForMarker):
 
     def __init__(self, popup=None):
         super(ClickForOneMarker, self).__init__(popup)
+        self._name = 'ClickForOneMarker'
 
 
 class LatLngtoForm(folium.LatLngPopup):
@@ -43,4 +44,4 @@ class LatLngtoForm(folium.LatLngPopup):
 
     def __init__(self):
         super(LatLngtoForm, self).__init__()
-        self._name = 'LatLngPopup'
+        self._name = 'LatLngtoForm'

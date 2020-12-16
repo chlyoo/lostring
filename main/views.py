@@ -53,4 +53,5 @@ def index():
         placeholder='state'
     ).add_to(folium_map)
 
+    # return render_template('v2temp/index.html', map=Markup(folium_map._repr_html_()))
     return render_template('bootstrap/folium_index.html', map=Markup(folium_map._repr_html_()))
