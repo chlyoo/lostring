@@ -3,8 +3,24 @@
 //TODO: mypage design
 {% block page_content %}
     <div>
-        <div class="float-md-left">분실신고 내역</div>
-        <div class="float-md-right"> 습득신고 내역</div>
+        <div class="float-md-left">분실신고 내역
+        <div>
+    {% if lost  %}
+    {% for item in lost %}
+            {{ item }}
+            {% endfor %}
+        {% endif %}
+        </div>
+        </div>
+        <div class="float-md-right"> 습득신고 내역
+        <div>
+    {% if found %}
+            {% for item in found %}
+            {{ item }}
+            {% endfor %}
+        {% endif %}
+        </div>
+        </div>
         <br>
         <div  class="float-md-none">History </div>
     </div>

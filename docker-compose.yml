@@ -2,15 +2,14 @@ version: '3'
 
 services: 
   db:
+    container_name: "db"
     image: mongo:latest
-    restart: always
     ports:
-      - 27017:27017
+      - "27017:27017"
     volumes: 
       - ./Mongodb/data:/data/db
-    container_name: "db"
+    command: [--auth]
     restart: always
-  
   httpserver:
     image: peterscience/devenv
     ports:
@@ -29,5 +28,5 @@ services:
     container_name: "ring"
     ports:
       - "443:443"
-    command: sh -c "(cd /data/ && git pull)&& python3 setup.py runserver"
+    command: sh -c "(cd /data/ && git pull)&& (pip install -r requirements.txt) && python3 setup.py runserver"
     restart: always

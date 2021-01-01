@@ -1,6 +1,6 @@
 from flask import render_template, Markup, url_for, redirect, flash
 
-from flask_login import login_required
+from flask_login import login_required, current_user
 from . import lostfound
 import folium
 import folium.plugins as plugins
@@ -26,10 +26,10 @@ def register_lost():
     plugins.LocateControl(auto_start=True).add_to(folium_map)  # 현재위치로 초기화
     folium_map.add_child(ClickForOneMarker(popup='분실위치'))
     if form.validate_on_submit():
-        # item = LostedItem(current_user.id)
+        lostitem = LostedItem(form.itemname.data, form.category.data, form.place.data, form.latitude.data, form.longitude.data, form.lost_date.data, current_user.id, form.detail.data)
         collection = db.get_collection('lostdata')
-        # collection.insert_one(lostitem.to_dict())
-
+        collection.insert_one(lostitem.to_dict())
+        flash('등록되었습니다.')
         return redirect(url_for('lostfound.my_page'))
     return render_template('bootstrap/register.html', form=form, map=Markup(folium_map._repr_html_()))
 
@@ -48,9 +48,9 @@ def register_found():
     plugins.LocateControl(auto_start=True).add_to(folium_map)  # 현재위치로 초기화
     folium_map.add_child(ClickForOneMarker(popup='습득위치'))
     if form.validate_on_submit():
-        # item = FoundedItem(current_user.id)
+        founditem = FoundedItem(current_user.id)
         collection = db.get_collection('founddata')
-        # collection.insert_one(lostitem.to_dict())
+        collection.insert_one(founditem.to_dict())
         return redirect(url_for('lostfound.my_page'))
     return render_template('bootstrap/register.html', form=form, map=Markup(folium_map._repr_html_()))
 
@@ -58,5 +58,15 @@ def register_found():
 @lostfound.route('/my_page', methods=['GET', 'POST'])
 @login_required
 def my_page():
-    pass
-    return render_template('bootstrap/mypage.html')
+    found = None
+    lost = None
+    lost_collection = db.get_collection('lostdata')
+    lost_result = lost_collection.find_one({'who':current_user.id})
+    if lost_result:
+        lost = [lost_result['when'], lost_result['status']]
+    # result = lost_collection.find_one({'who':current_user.id}, sort=[('now',-1)])
+    found_collection = db.get_collection('founddata')
+    found_result = found_collection.find_one({'who':current_user.id})
+    if found_result:
+        found = [found_result['when'],found_result['status']]
+    return render_template('bootstrap/mypage.html', lost= lost, found=found)
